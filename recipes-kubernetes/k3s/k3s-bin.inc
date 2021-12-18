@@ -15,15 +15,15 @@ S = "${WORKDIR}"
 inherit distro_features_check
 
 # TODO: slirp4netns, bridge-utils ?
-RDEPENDS_${PN} = "util-linux findutils pigz iproute2 ethtool iptables socat ca-certificates \
+RDEPENDS:${PN} = "util-linux findutils pigz iproute2 ethtool iptables socat ca-certificates \
                   ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '', 'cgroup-lite', d)} \
                   "
-RCONFLICTS_${PN} += "containerd cni runc kubernetes"
-RPROVIDES_${PN} = "kubectl crictl"
+RCONFLICTS:${PN} += "containerd cni runc kubernetes"
+RPROVIDES:${PN} = "kubectl crictl"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT  = "1"
-INSANE_SKIP_${PN} += "ldflags already-stripped"
+INSANE_SKIP:${PN} += "ldflags already-stripped"
 
 do_patch[noexec] = "1"
 do_configure[noexec] = "1"
@@ -55,7 +55,7 @@ do_install() {
     install -d ${D}/run/k3s/containerd
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${bindir}/k3s \
     ${bindir}/kubectl \
     ${bindir}/crictl \
@@ -63,7 +63,7 @@ FILES_${PN} += " \
     /data/rancher_data \
     ${sysconfdir}/cni/net.d/ \
     /run/k3s/containerd/"
-# FILES_${PN} += " \
+# FILES:${PN} += " \
 #     ${bindir}/k3s \
 #     ${bindir}/kubectl \
 #     ${bindir}/crictl \

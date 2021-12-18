@@ -10,7 +10,7 @@ S = "${WORKDIR}"
 
 inherit update-rc.d systemd distro_features_check
 
-RDEPENDS_${PN} = "k3s"
+RDEPENDS:${PN} = "k3s"
 
 K3S_URL ?= "defaultk3surl"
 K3S_CLUSTER_SECRET ?= "defaultk3ssecret"
@@ -36,7 +36,7 @@ do_install() {
 		${D}${systemd_unitdir}/system/k3s.service ${D}/${sysconfdir}/init.d/k3s
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${sysconfdir}/default/k3s \
     ${systemd_unitdir}/system/k3s.service \
     ${sysconfdir}/init.d/k3s"
@@ -44,5 +44,5 @@ FILES_${PN} += " \
 INITSCRIPT_NAME = "k3s"
 INITSCRIPT_PARAMS = "defaults 95 20"
 
-SYSTEMD_SERVICE_${PN} = "k3s.service"
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
+SYSTEMD_SERVICE:${PN} = "k3s.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
