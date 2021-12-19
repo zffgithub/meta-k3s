@@ -12,7 +12,7 @@ INC_PR = "r0"
 
 S = "${WORKDIR}"
 
-inherit distro_features_check
+inherit features_check
 
 # TODO: slirp4netns, bridge-utils ?
 RDEPENDS:${PN} = "util-linux findutils pigz iproute2 ethtool iptables socat ca-certificates \

@@ -8,7 +8,7 @@ SRC_URI = "file://k3s.init \
 
 S = "${WORKDIR}"
 
-inherit update-rc.d systemd distro_features_check
+inherit update-rc.d systemd features_check
 
 RDEPENDS:${PN} = "k3s"
 
