@@ -52,7 +52,7 @@ do_install() {
     install -d ${D}${sysconfdir}/cni/net.d
 
     # containerd socket file directory
-    install -d ${D}/run/k3s/containerd
+    install -d ${D}/data/run/k3s/containerd
 }
 
 FILES:${PN} += " \
@@ -62,7 +62,7 @@ FILES:${PN} += " \
     /data/rancher_config \
     /data/rancher_data \
     ${sysconfdir}/cni/net.d/ \
-    /run/k3s/containerd/"
+    /data/run/k3s/containerd/"
 # FILES:${PN} += " \
 #     ${bindir}/k3s \
 #     ${bindir}/kubectl \
